@@ -1,0 +1,69 @@
+{% load static %}
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Add New Asset</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="asset_name" class="form-label">Asset Name</label>
+            <input type="text" class="form-control" id="asset_name" name="asset_name" required>
+            {% if form.asset_name.errors %}
+                <div class="text-danger">
+                    {% for error in form.asset_name.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="serial_number" class="form-label">Serial Number</label>
+            <input type="text" class="form-control" id="serial_number" name="serial_number" required>
+            {% if form.serial_number.errors %}
+                <div class="text-danger">
+                    {% for error in form.serial_number.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" name="location" required>
+            {% if form.location.errors %}
+                <div class="text-danger">
+                    {% for error in form.location.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" id="status" name="status">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="under_maintenance">Under Maintenance</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="purchase_date" class="form-label">Purchase Date</label>
+            <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
+            {% if form.purchase_date.errors %}
+                <div class="text-danger">
+                    {% for error in form.purchase_date.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Asset</button>
+    </form>
+{% endblock %}

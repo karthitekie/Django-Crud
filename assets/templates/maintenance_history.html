@@ -1,0 +1,32 @@
+{% load static %}
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Maintenance History for {{ asset.asset_name }}</h1>
+    <a href="/assets/" class="btn btn-secondary mb-3">Back to Asset List</a>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Maintenance Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Performed By</th>
+                <th scope="col">Next Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maintenance in maintenances %}
+                <tr>
+                    <td>{{ maintenance.maintenance_date }}</td>
+                    <td>{{ maintenance.description }}</td>
+                    <td>{{ maintenance.performed_by }}</td>
+                    <td>{{ maintenance.next_due_date }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center">No maintenance records found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

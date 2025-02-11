@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1 class='m-3'>Asset List</h1>
+    <a href="/assets/create/" class="btn btn-primary m-3">Add New Asset</a>
+    
+    <table class="table table-bordered m-3">
+        <thead>
+            <tr>              
+                <th scope="col">S.No</th>
+                <th scope="col">Asset Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Status</th>
+                <th scope="col">Last Maintenance</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asset in assets %}
+                <tr>                    
+                    <td>{{ asset.serial_number }}</td>
+                    <td>{{ asset.asset_name }}</td>
+                    <td>{{ asset.location }}</td>
+                    <td>{{ asset.status }}</td>
+                    <td>{{ asset.last_maintenance_date }}</td>
+                    <td>
+                        <a href="{% url 'maintenance_history' asset.id %}" class="btn btn-info mr-sm-3">Update</a>
+                        <a href="{% url 'maintenance_history' asset.id %}" class="btn btn-info">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

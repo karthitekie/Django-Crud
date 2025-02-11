@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center">Add New Asset</h1>
+        <div class="col-md-8 offset-md-2">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <!-- Column 1 -->
+                    <div class="col-md-6 mb-3">
+                        <label for="serial_number" class="form-label">Serial Number</label>
+                        {{ form.serial_number }}
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div class="col-md-6 mb-3">
+                        <label for="asset_name" class="form-label">Asset Name</label>
+                        {{ form.asset_name }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Column 3 -->
+                    <div class="col-md-6 mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        {{ form.location }}
+                    </div>
+
+                    <!-- Column 4 -->
+                    <div class="col-md-6 mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        {{ form.status }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Column 5 -->
+                    <div class="col-md-6 mb-3">
+                        <label for="purchase_date" class="form-label">Purchase Date</label>
+                        {{ form.purchase_date }}
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary">Save Asset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
